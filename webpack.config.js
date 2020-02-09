@@ -5,8 +5,9 @@ const path = require('path');
 
 module.exports = { 
   // Add react entry file
-  entry: '../client/index.js',
+  entry: './client/index.js',
   // Output deals with where the complied code goes. It add it into a bundle file located in the dist folder.
+  mode: 'development',
   output: {
     path: path.join(__dirname, '/public'),
     filename: 'bundle.js'

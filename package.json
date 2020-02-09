@@ -4,8 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node main",
-    "server": "nodemon main"
+    "start": "echo 'Running server for production - developers, use npm run start:dev for development' && node main",
+    "server": "nodemon main",    
+    "start-server": "nodemon --watch server main.js -e html,js,css",
+    "start:dev": "npm run build-watch & npm run start-server",
+    "build-watch": "webpack -w",
+    "start-dev": "webpack -w & nodemon server.js",
+    "seed": "node seed.js"
   },
   "repository": {
     "type": "git",

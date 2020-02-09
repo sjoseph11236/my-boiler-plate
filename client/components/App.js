@@ -5,9 +5,8 @@ class App extends Component {
     return(
       <div>
         <h1>My Boiler Plate</h1>
-      </div>
+      </div> 
     )
-
   }
 }
 

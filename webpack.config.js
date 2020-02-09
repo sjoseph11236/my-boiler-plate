@@ -1,8 +1,5 @@
 //  Add path module to manipulate file paths
 const path = require('path');
-
-
-
 module.exports = { 
   // Add react entry file
   entry: './client/index.js',

@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "echo 'Running server for production - developers, use npm run start:dev for development' && node main",
+    "start": "npm run build-watch & npm run start-server",
     "server": "nodemon main",    
     "start-server": "nodemon --watch server main.js -e html,js,css",
-    "start:dev": "npm run build-watch & npm run start-server",
     "build-watch": "webpack -w",
     "start-dev": "webpack -w & nodemon server.js",
     "seed": "node seed.js"

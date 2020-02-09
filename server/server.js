@@ -15,7 +15,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/api', (req, res) => { 
-  res.send('hello Worldddddd');
+  res.send('hello World');
 });
 
 // 404 

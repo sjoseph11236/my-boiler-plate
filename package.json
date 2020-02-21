@@ -9,7 +9,7 @@
     "start-server": "nodemon --watch server main.js -e html,js,css",
     "build-watch": "webpack -w",
     "start-dev": "webpack -w & nodemon server.js",
-    "seed": "node seed.js",
+    "seed": "node ./bin/seed.js",
     "test": "jest --watch"
   },
   "repository": {

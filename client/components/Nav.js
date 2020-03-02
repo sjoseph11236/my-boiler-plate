@@ -35,6 +35,11 @@ const Nav = ({ handleClick , isLoggedIn, name }) => {
                 <u>Sign In</u>
               </Link>
             </p>
+            <p className="level-item">
+              <Link to='/register'>
+                <u>Register</u>
+              </Link>
+            </p>
           </div>
         </nav>
         )}

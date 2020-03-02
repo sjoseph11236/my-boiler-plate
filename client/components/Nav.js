@@ -27,7 +27,7 @@ const Nav = ({ handleClick , isLoggedIn, name }) => {
           <div className="level-right">
             <p className="level-item">
               <Link to='/'>
-                <u>home</u>
+                <u>Home</u>
               </Link>
             </p>
             <p className="level-item">

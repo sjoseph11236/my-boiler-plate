@@ -1,8 +1,33 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-// Create an express instance
+const session = require('express-session');
+const passport = require('passport');
 const app = express();
+// const { db } = require('./db/');
+// const User = require('./db/models/User');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const dbStore = new SequelizeStore({ db });
+
+dbStore.sync();
+
+passport.serializeUser((user, done) => {
+  try {
+    done(null, user.id);
+  } catch (error) {
+    done(error);
+  }
+
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findByPk(id);
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
+});
 
 // Logging middleware
 app.use(morgan('dev'));
@@ -11,6 +36,24 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'a wildly insecure secret',
+  store: dbStore,
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// app.use('/auth', require('./auth'));
+// app.use('/api', require('./api'));
+
+app.get('/api', (req, res) => { 
+  res.send('hello World');
+});
+
+
 // Static middleware
 app.use(express.static(path.join(__dirname, '../public')));
 
@@ -18,11 +61,6 @@ app.use(express.static(path.join(__dirname, '../public')));
   app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'))
   })
-// app.use('/api', require('./routes'));
-
-app.get('/api', (req, res) => { 
-  res.send('hello World');
-});
 
 // 404 
 app.use(function(req, res, next) {

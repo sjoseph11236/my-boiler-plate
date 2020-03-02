@@ -4,12 +4,12 @@ const path = require('path');
 const session = require('express-session');
 const passport = require('passport');
 const app = express();
-// const { db } = require('./db/');
-// const User = require('./db/models/User');
+const { db } = require('./db/');
+const User = require('./db/models/User');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-// const dbStore = new SequelizeStore({ db });
+const dbStore = new SequelizeStore({ db });
 
-// dbStore.sync();
+dbStore.sync();
 
 passport.serializeUser((user, done) => {
   try {
@@ -35,22 +35,22 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-// app.use(session({
-//   secret: process.env.SESSION_SECRET || 'a wildly insecure secret',
-//   store: dbStore,
-//   resave: false,
-//   saveUninitialized: false
-// }));
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'a wildly insecure secret',
+  store: dbStore,
+  resave: false,
+  saveUninitialized: false
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use('/auth', require('./auth'));
+app.use('/auth', require('./auth'));
 // app.use('/api', require('./api'));
 
-app.get('/api', (req, res) => { 
-  res.send('hello World');
-});
+// app.get('/api', (req, res) => { 
+//   res.send('hello World');
+// });
 
 
 // Static middleware

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-// import Nav from './components/Nav';
-// import Routes from './routes';
+import Nav from './components/Nav';
+import Routes from './routes';
 
 class App extends Component { 
   render() {
     return(
       <div>
-        <section className="hero is-Dark is-bold">
+        <section className="hero is-dark is-bold">
           <div className="hero-body">
             <h1 className="title">
               My Boilerplate
@@ -17,7 +17,8 @@ class App extends Component {
           </div>
         </section>
         <section className="section">
-          {/* <Routes /> */}
+          <Nav />
+          <Routes />
         </section> 
       </div>  
     )

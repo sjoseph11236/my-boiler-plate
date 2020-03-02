@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { me } from './store';
+import SignIn from './components/auth/SignIn';
 
 class Routes extends Component {
 
@@ -17,7 +18,7 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path= '/'  />
-        <Route exact path="/signin" />
+        <Route exact path="/signin" component={SignIn}/>
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

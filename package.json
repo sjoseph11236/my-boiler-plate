@@ -11,7 +11,7 @@
     "server": "nodemon main",
     "start-server": "nodemon --watch server main.js -e html,js,css",
     "build-watch": "webpack -w",
-    "start-dev": "webpack -w & nodemon server.js",
+    "start-dev": "webpack -w & nodemon --watch server.js",
     "seed": "node ./bin/seed.js",
     "test": "mocha test/spec.js --watch"
   },

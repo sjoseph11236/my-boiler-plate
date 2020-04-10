@@ -12,7 +12,7 @@ class App extends Component {
               My Boilerplate
             </h1>
             <p class="subtitle">
-              My first website with <strong>Bulma</strong>!
+              My Boilerplate with <strong>Bulma</strong>!
             </p>  
           </div>
         </section>
